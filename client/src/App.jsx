@@ -29,12 +29,16 @@ const App = () => {
     const auth = gapi.auth2.getAuthInstance();
 
     auth.signIn().then((user) => {
+      alert("Logged in")
       const profile = user.getBasicProfile();
       setProfilePhoto(profile.getImageUrl()); // Accessing the profile photo URL
       setUserName(profile.getName())
       setUserEmail( profile.getEmail())
       setIsLogged(true)
+
     }).catch(error => {
+      alert("error")
+
       console.error('Error during sign-in:', error);
     });
   };
