@@ -70,7 +70,7 @@ const App = () => {
     </div>
     }
 
-      {profilePhoto && (
+      {isLogged && (
               <div className='w-full h-screen flex items-center justify-center  '>
 
           <div className=' bg-white w-[20rem] h-[20rem] p-5 flex flex-col gap-5'>
