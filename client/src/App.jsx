@@ -8,6 +8,8 @@ const App = () => {
   const [isLogged,setIsLogged]=useState(false);
   const [userName,setUserName]=useState(undefined);
   const [userEmail,setUserEmail]=useState(undefined);
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
 
 
   useEffect(() => {
@@ -36,18 +38,34 @@ const App = () => {
       console.error('Error during sign-in:', error);
     });
   };
+  const handler=(e)=>{
+    if(e.target.id=="password"){
+      setPassword(e.target.value)
+    }else if(e.target.id=="email"){
+      setEmail(e.target.value)
+
+    }
+  }
 
   return (
    
     <div className='flex w-full  justify-center items-center h-screen bg-gray-500/5'>
       {
-      isLogged?"":<div className='border p-5 bg-white flex flex-col gap-2'>
-      <h1>Login</h1>
+      isLogged?"":
+      <div className='border p-6 bg-white flex flex-col items-center gap-2'>
+      <h1 className='mr-auto font-bold'>Login</h1>
+      <div className='w-full flex flex-col gap-5'>
+        <input onChange={handler} className='p-1 border' type="email" name="" value={email} id="email"  placeholder='Email' />
+        <input onChange={handler} className='p-1 border' type="password" name="" value={password} id="password" placeholder='password' />
+        <button className='w-full bg-sky-600 text-white py-1 rounded-sm'>Login</button>
+      </div>
+      <span>Or</span>
       <button 
-        className='border px-5 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors' 
+        className='border px-5 py-2 flex items-center gap-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors' 
         onClick={handleLogin}
-      >
-        Sign in with Google
+    >
+       <img className='h-5 w-5' src="https://developers.google.com/identity/images/g-logo.png" alt="Google icon" width="20" height="20" />
+       Sign in with Google
       </button>
     </div>
     }
