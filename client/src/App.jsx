@@ -51,7 +51,6 @@ const App = () => {
       </button>
     </div>
     }
-      
 
       {profilePhoto && (
               <div className='w-full h-screen flex items-center justify-center  '>
